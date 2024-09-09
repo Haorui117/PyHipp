@@ -57,7 +57,8 @@ with lock:
             # append item to end of list
             # add code here
             clist.append(env)
-	    
+            for envi in clist:
+                print(envi)
         else:    
             # get and remove env from clist
             # add code here
