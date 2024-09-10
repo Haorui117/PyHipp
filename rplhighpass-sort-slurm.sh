@@ -12,6 +12,11 @@
 #SBATCH -o rplhighpass-sort-slurm.%N.%j.out # STDOUT
 #SBATCH -e rplhighpass-sort-slurm.%N.%j.err # STDERR
 
+/data/miniconda3/bin/conda init
+source ~/.bashrc
+envarg=`/data/src/PyHipp/envlist.py`
+conda activate $envarg
+
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 python -u -c "import PyHipp as pyh; \
 import time; \
@@ -24,3 +29,5 @@ print(time.localtime());"
 
 aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:605134426873:awsnotify --message "RPLHighPassSortJobDone"
 
+conda deactivate 
+/data/src/PyHipp/envlist.py $envarg
