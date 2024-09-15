@@ -30,3 +30,5 @@ print(time.localtime());"
 conda deactivate 
 /data/src/PyHipp/envlist.py $envarg
 
+conda deactivate 
+/data/src/PyHipp/envlist.py $envarg
